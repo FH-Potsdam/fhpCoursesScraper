@@ -1,6 +1,6 @@
 [![Join the chat at https://gitter.im/FH-Potsdam/coursesAPI][gitterBadge]][gitterUrl]
 
-# FHP Courses Scrapper  
+# FHP Courses Scraper  
 This scrapper is designed to extract informations about the courses given in the University of Applied Science Potsdam. More precisely, it focuses on scrapping the [online course catalog][vorlesungsverzeichnisFHP] of the school.
 
 <!--- Links -->
