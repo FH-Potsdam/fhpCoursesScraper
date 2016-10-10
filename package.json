@@ -1,0 +1,28 @@
+{
+  "name": "fhp-courses-scraper",
+  "version": "1.0.0",
+  "description": "This scrapper is designed to extract informations about the courses given in the University of Applied Science Potsdam. More precisely, it focuses on scrapping the online course catalog of the school (https://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FH-Potsdam/fhpCoursesScraper.git"
+  },
+  "keywords": [
+    "scraper",
+    "fhp",
+    "courses",
+    "potsdam",
+    "nightmare",
+    "headless",
+    "rawdataprepare"
+  ],
+  "author": "Jonas Köpfer, Joseph Ribbe",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/FH-Potsdam/fhpCoursesScraper/issues"
+  },
+  "homepage": "https://github.com/FH-Potsdam/fhpCoursesScraper#readme"
+}
