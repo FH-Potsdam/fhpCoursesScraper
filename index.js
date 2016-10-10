@@ -1,7 +1,14 @@
 var Nightmare = require('nightmare');
+var fs = require('fs');
+
+var date = new Date();
+var dateString = date.toISOString();
+
+var studyStage = 1
 
 var vv1 = new Nightmare()
-  .goto('http://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis/')
+  .useragent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36")
+  .goto('http://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis/'+studyStage+'-studienabschnitt-ba-design/')
   .wait(200)
   .evaluate(function () {
 
@@ -34,7 +41,9 @@ var vv1 = new Nightmare()
       course.profs =      $.trim(course.profs.replace(/[\t\n]+/g,' '))
       course.time =       $.trim(course.time.replace(/[\t\n]+/g,' '))
       course.location =   $.trim(course.location.replace(/[\t\n]+/g,' '))
-      course.credits =    parseInt(course.credits.match(/([1-9])(?=\WCredits)/g)[0])
+      course.credits =    course.credits.match(/([1-9])(?=\WCredits)/g)
+
+
 
       //prepare JSON
       data.push(course);
@@ -44,9 +53,15 @@ var vv1 = new Nightmare()
       data
     };
   })
-
   .run(function (err, nightmare) {
         if (err) return console.log(err);
-        console.log(JSON.stringify(nightmare, null, 4));
+
+        results = JSON.stringify(nightmare, null, 2)
+
+        console.log(results);
         console.log("SCRAPER DONE");
-  });
+
+        //write results to timestamped json file
+        fs.writeFile('results/' + dateString + '_VV_StudyStage' + studyStage + '.json', results, 'utf8');
+  })
+  .end();
