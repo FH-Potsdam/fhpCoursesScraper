@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "fs": "0.0.1-security",
-    "nightmare": "^2.7.0"
+    "nightmare": "^2.7.0",
+    "vo": "^4.0.2"
   },
   "keywords": [
     "scraper",
