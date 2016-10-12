@@ -10,6 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/FH-Potsdam/fhpCoursesScraper.git"
   },
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "nightmare": "^2.7.0",
+    "vo": "^4.0.2"
+  },
   "keywords": [
     "scraper",
     "fhp",
