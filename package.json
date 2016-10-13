@@ -11,6 +11,7 @@
     "url": "git+https://github.com/FH-Potsdam/fhpCoursesScraper.git"
   },
   "dependencies": {
+    "babel-eslint": "^7.0.0",
     "fs": "0.0.1-security",
     "nightmare": "^2.7.0",
     "vo": "^4.0.2"
