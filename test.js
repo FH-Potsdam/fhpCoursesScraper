@@ -1,35 +1,43 @@
-const RawDataPrepare = require( "./lib/RawDataPrepare.js" );
+const
+	RawDataPrepare = require( "./lib/RawDataPrepare.js" ),
+	FileSystem = require( "fs" );
 
-let rawDataPrepare = new RawDataPrepare(),
-	testData = {
-		courseListHeadline: "Vorlesungsverzeichnis Erster Studienabschnitt WiSe 2016/17 - Änderungen noch möglich!",
-		documentTitle: "1. Studienabschnitt BA Design",
-		courses: [
-			{
-				studyCode: "13Th-DM",
-				title: "Designmanagement: Medienrecht - Seminar",
-				titleDetails: "1.142 alte Studienordnung I/2 Fachorientierung Produktdesign 12FOPd-PU Produkt- & Umweltdesign 6 Credits",
-				profs: "Prof. Dr. Nico Heise, Prof. Dr. Patrick, Lorenz Zeronl",
-				description: "Lorem Ipsum dolor sit amet..., Kursbeginn ist am 20. Oktober 2016. Lorem Ipsum dolor sit amet. Workspace: https://incom.org/workspace/6886. Fabian Morón Zirfas",
-				time: "	Dienstag 14.00 – 18.00 Uhr, 14tägig", // , 20.10.2016
-				location: "LW 122 Foto S/W-Labor"
-			}
-		]
-		/*{
-			moduleName: "14W2D-DP",
-			title: "Gestaltungsgrundlagen Atelier Farbe:",
-			tutors: "Jens Tix, Marcus Große, Prof. Klaus Keller",
-			description: "Lorem Ipsum dolor sit amet. Workspace: https://incom.org/workspace/6886. Fabian Morón Zirfas. Die Teilnehmerzahl ist auf 20 Teilnehmer_innen begrenzt. Anderer Link: https://www.iri-thesys.org/research/research-groups/Innovative-sustainable-land-management/ginkoo/ginkoo-project",
-			time: "Freitag 10.00 – 16.00 Uhr, und Donnerstag 10.00, Beginn: 24.10.2016",
-			location: "LW 122 Foto S/W-Labor"
-		},*/ /*, {
-			moduleName: "",
-			title: "",
-			tutors: "",
-			description: "",
-			time: "",
-			location: ""
-		}*/
-	};
+let jsonOutputDir = "./transformedData.json",
+	rawDataPrepare = new RawDataPrepare(),
+	jsonData = null,
+	testData = [
+		{
+			"credits": 6,
+			"description": "Dieser handwerklich-praktische Kurs behandelt die Wirkung und Bedeutung von Farben unter physiologischen wie auch unter kulturgeschichtlichen Gesichtspunkten: Kontraste, Farbklänge, Farbsymbolik. Neben praktischen Übungen vor Ort zur Sensibilisierung für Farben und Nuancen wird es auch einige Ausflüge an ausgewählte Orte in Berlin geben, bei denen Farbe eine Rolle spielt.",
+			"location": "LW 226",
+			"profs": "Dipl.-Des. Maria Kleinschmidt",
+			"studyCode": "11At-F",
+			"studyStage": 1,
+			"summerSemester": false,
+			"time": "Freitag  10.00 – 16.00 Uhr",
+			"title": "Gestaltungsgrundlagen Atelier Farbe:"
+		},
+		{
+			"credits": 6,
+			"description": " Die Gestalt der menschlichen Figur, Anatomie, Proportionslehre, Statik. ",
+			"location": "D/323",
+			"profs": "Frank Gottsmann",
+			"studyCode": "11At-Z",
+			"studyStage": 1,
+			"summerSemester": false,
+			"time": "Dienstag  9.00 – 13.00 Uhr",
+			"title": "Gestaltungsgrundlagen Atelier Zeichnen: Figur und Raum"
+		}
+	];
 
-console.log( JSON.stringify( rawDataPrepare.processDataArray( testData ), null, 4 ) );
+
+jsonData = JSON.stringify( rawDataPrepare.processDataArray( testData ), null, 4 );
+console.log( jsonData );
+
+// FileSystem.writeFile( jsonOutputDir, jsonData, function ( err ) {
+// 	if ( err ) {
+// 		console.log( err );
+// 	} else {
+// 		console.log( "JSON saved to " + jsonOutputDir );
+// 	}
+// } );
