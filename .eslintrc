@@ -1,0 +1,10 @@
+{
+	"extends": "eslint:recommended",
+	"parser": "babel-eslint",
+	"rules": {
+		"no-extra-boolean-cast": "off"
+	},
+	"env": {
+		"node": true
+	}
+}
