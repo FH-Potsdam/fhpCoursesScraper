@@ -2,8 +2,6 @@ var Nightmare = require('nightmare');
 var vo = require('vo');
 var fs = require('fs');
 
-var RawDataPrepare = require('./lib/RawDataPrepare');
-
 var date = new Date();
 var dateString = date.toISOString();
 
@@ -65,14 +63,6 @@ function* run() {
 
     }
     console.dir(data);
-    console.log("SCRAPER DONE");
-
-    cleaner = new RawDataPrepare();
-    data = cleaner.processDataObject(data);
-
-    console.dir(data);
-    console.log("RAW DATA PREPARE");
-
     data = JSON.stringify(data, null, 2)
 
     //write results to timestamped json file
