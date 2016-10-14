@@ -25,7 +25,7 @@ function scrapeCallback ( scrapedData ) {
 // write cleanData to timestamped json file
 function done () {
     console.dir(cleanData);
-    jsonData = JSON.stringify(cleanData, null, 2)
+    jsonData = JSON.stringify(cleanData[0], null, 2)
     fs.writeFile('results/' + dateString + '_TermDir.json', jsonData, 'utf8');
 }
 

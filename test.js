@@ -1,29 +1,43 @@
-const RawDataPrepare = require( "./lib/RawDataPrepare.js" );
+const
+	RawDataPrepare = require( "./lib/RawDataPrepare.js" ),
+	FileSystem = require( "fs" );
 
-let rawDataPrepare = new RawDataPrepare(),
+let jsonOutputDir = "./transformedData.json",
+	rawDataPrepare = new RawDataPrepare(),
+	jsonData = null,
 	testData = [
 		{
-			moduleName: "14W2D-DP",
-			title: "Gestaltungsgrundlagen Atelier Farbe:",
-			tutors: "Jens Tix, Marcus Große, Prof. Klaus Keller",
-			description: "Lorem Ipsum dolor sit amet. Workspace: https://incom.org/workspace/6886. Fabian Morón Zirfas. Die Teilnehmerzahl ist auf 20 Teilnehmer_innen begrenzt. Anderer Link: https://www.iri-thesys.org/research/research-groups/Innovative-sustainable-land-management/ginkoo/ginkoo-project",
-			time: "Freitag 10.00 – 16.00 Uhr, und Donnerstag 10.00, Beginn: 24.10.2016",
-			location: "LW 122 Foto S/W-Labor"
-		}, {
-			moduleName: "99XXXXXXXX-XXX",
-			title: "XXXXXXXX: XXXXXXX",
-			tutors: "Prof. Dr. Patrick, Lorenz Zeronl, Lorem Ipsum",
-			description: "Lorem Ipsum dolor sit amet...",
-			time: "Sonntag 00.00 – 23.59 Uhr",
-			location: "LW 122 Foto S/W-Labor"
-		}, {
-			moduleName: "",
-			title: "",
-			tutors: "",
-			description: "",
-			time: "",
-			location: ""
+			"credits": 6,
+			"description": "Dieser handwerklich-praktische Kurs behandelt die Wirkung und Bedeutung von Farben unter physiologischen wie auch unter kulturgeschichtlichen Gesichtspunkten: Kontraste, Farbklänge, Farbsymbolik. Neben praktischen Übungen vor Ort zur Sensibilisierung für Farben und Nuancen wird es auch einige Ausflüge an ausgewählte Orte in Berlin geben, bei denen Farbe eine Rolle spielt.",
+			"location": "LW 226",
+			"profs": "Dipl.-Des. Maria Kleinschmidt",
+			"studyCode": "11At-F",
+			"studyStage": 1,
+			"summerSemester": false,
+			"time": "Freitag  10.00 – 16.00 Uhr",
+			"title": "Gestaltungsgrundlagen Atelier Farbe:"
+		},
+		{
+			"credits": 6,
+			"description": " Die Gestalt der menschlichen Figur, Anatomie, Proportionslehre, Statik. ",
+			"location": "D/323",
+			"profs": "Frank Gottsmann",
+			"studyCode": "11At-Z",
+			"studyStage": 1,
+			"summerSemester": false,
+			"time": "Dienstag  9.00 – 13.00 Uhr",
+			"title": "Gestaltungsgrundlagen Atelier Zeichnen: Figur und Raum"
 		}
 	];
 
-console.log( JSON.stringify( rawDataPrepare.processDataArray( testData ), null, 4 ) );
+
+jsonData = JSON.stringify( rawDataPrepare.processDataArray( testData ), null, 4 );
+console.log( jsonData );
+
+// FileSystem.writeFile( jsonOutputDir, jsonData, function ( err ) {
+// 	if ( err ) {
+// 		console.log( err );
+// 	} else {
+// 		console.log( "JSON saved to " + jsonOutputDir );
+// 	}
+// } );
