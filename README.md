@@ -33,12 +33,16 @@ The script will spit out a timestamped json file in **/results** with all course
 - http://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis/ma-design/
 
 
-## How we do it
+# Motivation
+This project has been made as project of the 2 weeks long Workshop "Creating an open sourced REST API" given by Julia Freyhoff @antsteelmule and Lucas Vogel @vogelino in the University of Applied Sciences Potsdam.
 
-# Related Repositories
-- [CoursesAPI](https://github.com/FH-Potsdam/coursesAPI) 
-- [Viewer (App)](https://github.com/FH-Potsdam/coursesViewer)
+This project was done in parallel with two other projects:
+- :octocat: [Courses API](https://github.com/FH-Potsdam/coursesAPI)
+A REST API designed to create, read, update and delete study courses (CRUD).
+- :octocat: [Viewer (App)](https://github.com/FH-Potsdam/coursesViewer)
+An html website using the courses API to display all the available courses. This project was used as a demonstration of an API usage with ajax loading.
 
+If you want to know more about the Project and/or the Workshop, look at our [documentation](https://fhp.incom.org/projekt/7668) (german), or get in touch with us.
 
 ## Collaborators
 - [Julia Freyhoff](https://github.com/antsteelmule) — @antsteelmule
