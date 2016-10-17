@@ -27,8 +27,12 @@ function scrapeCallback ( scrapedData ) {
 
 // write cleanData to timestamped json file
 function done () {
+    results = './results'
     jsonData = JSON.stringify(cleanData, null, 2)
-    fs.writeFile('results/' + dateString + '_TermDir.json', jsonData, 'utf8');
+    if(!fs.existsSync(results)){
+        fs.mkdirSync(results);
+    }
+    fs.writeFile(results + '/'+ dateString + '_TermDir.json', jsonData, 'utf8');
 }
 
 // scrape every studyStage
