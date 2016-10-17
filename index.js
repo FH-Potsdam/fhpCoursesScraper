@@ -15,18 +15,24 @@ let dateString = date.toISOString();
 
 // cleanup scrapedData for every StudyStage and add to cleanData
 function scrapeCallback ( scrapedData ) {
-    cleanData.push( rawDataPrepare.processDataArray( scrapedData ) );
+    cleanData = cleanData.concat( rawDataPrepare.processDataArray( scrapedData ) );
+
+    console.log("cleandata length = "+ cleanData.length);
+
     scrapedDone++;
-    if ( scrapedDone === studyStages.length - 1 ) {
+    if ( scrapedDone === studyStages.length) {
         done();
     }
 }
 
 // write cleanData to timestamped json file
 function done () {
-    console.dir(cleanData);
-    jsonData = JSON.stringify(cleanData[0], null, 2)
-    fs.writeFile('results/' + dateString + '_TermDir.json', jsonData, 'utf8');
+    results = './results'
+    jsonData = JSON.stringify(cleanData, null, 2)
+    if(!fs.existsSync(results)){
+        fs.mkdirSync(results);
+    }
+    fs.writeFile(results + '/'+ dateString + '_TermDir.json', jsonData, 'utf8');
 }
 
 // scrape every studyStage
