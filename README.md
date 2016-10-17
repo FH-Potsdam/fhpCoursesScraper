@@ -18,9 +18,6 @@ git clone https://github.com/FH-Potsdam/fhpCoursesScraper.git
 # install node dependencies
 npm install
 
-# add a results dir (sry!)
-mkdir results
-
 # start the courses scraper
 node index.js
 ```
