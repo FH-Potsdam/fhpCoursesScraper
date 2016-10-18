@@ -1,7 +1,7 @@
 [![Join the chat at https://gitter.im/FH-Potsdam/coursesAPI][gitterBadge]][gitterUrl]
 
 # FHP Design Courses Scraper  
-This scrapper is designed to extract informations about the design courses given in the University of Applied Science Potsdam. More precisely, it focuses on scrapping the [online course catalog][vorlesungsverzeichnis FHP] of the design faculty.
+This scrapper is designed to extract informations about the design courses given in the University of Applied Science Potsdam as well as the teachers of the school. More precisely, it focuses on scrapping the [online course catalog][vorlesungsverzeichnis FHP] of the design faculty and the [page listing the people involved in the school][people list FHP].
 
 ## Prerequisites
 To contribute to the development and to run the courses API, make sure you fulfill the following prerequisites:
@@ -19,7 +19,7 @@ git clone https://github.com/FH-Potsdam/fhpCoursesScraper.git
 npm install
 
 # start the courses scraper
-node index.js
+npm start
 ```
 
 ## What to expect
@@ -28,6 +28,10 @@ The script will spit out a timestamped json file in **/results** with all course
 - http://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis/1-studienabschnitt-ba-design/
 - http://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis/2-studienabschnitt-ba-design/
 - http://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis/ma-design/
+
+...and all teachers from the following pages:
+
+- https://www.fh-potsdam.de/studieren/design/personen/
 
 
 # Motivation
@@ -53,3 +57,4 @@ If you want to know more about the Project and/or the Workshop, look at our [doc
 [gitterUrl]:  https://gitter.im/FH-Potsdam/coursesAPI?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
 [vorlesungsverzeichnisFHP]: https://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis
+[people list FHP]: https://www.fh-potsdam.de/studieren/design/personen
