@@ -1,17 +1,6 @@
-const Moment = require('moment-timezone');
-const { REGEX_TYPES, DATE, KEY_MAPPING_CONFIG } = require('./constants');
-
-const isValueInvalid = (value) =>
-	(value === null || Number.isNaN(value) || value === undefined);
-
-const cleanDirtyObjectValue = (obj) => {
-	const reduceValidObject = (accumulator, key) => {
-		const value = obj[key];
-		return isValueInvalid(value) ? accumulator :
-			Object.assign({}, accumulator, { [key]: value });
-	};
-	return Object.keys(obj).reduce(reduceValidObject, {});
-}
+import Moment from 'moment-timezone';
+import { REGEX_TYPES, DATE, KEY_MAPPING_CONFIG } from './constants';
+import { cleanDirtyObjectValue } from '../utils/cleaningUtil';
 
 const softParseInt = (value) => {
 	const parsedVal = Number.parseInt(value, 10);

@@ -2,17 +2,8 @@
 import Nightmare from 'nightmare';
 import vo from 'vo';
 import { saveCleanedDataInFile, createFilePathForKey } from '../utils/saveUtil';
-import { PEOPLE_URL, MAX_PAGE, REGEX_TYPES } from './constants';
-
-const cleanPerson = ({
-	phoneNumbers,
-	mailAddresses,
-	...rest
-}) => ({
-	mailAddresses: mailAddresses.replace(' (at) ', '@'),
-	phoneNumbers: phoneNumbers.match(REGEX_TYPES.PHONE_NUMBERS),
-	...rest
-});
+import { PEOPLE_URL, MAX_PAGE } from './constants';
+import { cleanPerson } from './peopleCleaner';
 
 vo(run)((err) => {
 	if (err) {
@@ -22,7 +13,7 @@ vo(run)((err) => {
 
 function* run() {
 	const nightmare = new Nightmare();
-	const people = [];
+	let people = [];
 	let currentPage = 0;
 
 	yield nightmare
@@ -30,10 +21,10 @@ function* run() {
 		.wait('body');
 
 		while (currentPage < MAX_PAGE) {
-			people.push(
+			people = people.concat(
 				yield nightmare.evaluate(function() {
 
-				var people = [];
+				var person = [];
 
 				$('.person-item').each(function() {
 					const $element = $(this);
@@ -44,14 +35,14 @@ function* run() {
 						.replace(spaceChars, ' ')
 						.trim();
 
-					people.push({
+					person.push({
 						person: cleanText($element.find('.person-data .more-link')),
 						mailAddresses: cleanText($element.find('.person-data dd a')),
 						phoneNumbers: cleanText($element.find('.person-data dd'))
 					});
 				});
 
-				return people;
+				return person;
 			})
 		);
 
@@ -64,9 +55,10 @@ function* run() {
 
 	}
 
+	const cleanedPeople = people.map((person) => cleanPerson(person));
 	saveCleanedDataInFile(
 		createFilePathForKey('people'),
-		people.map(cleanPerson)
+		cleanedPeople
 	);
 	yield nightmare.end();
 }
