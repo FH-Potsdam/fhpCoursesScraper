@@ -1,13 +1,10 @@
 [![Join the chat at https://gitter.im/FH-Potsdam/coursesAPI][gitterBadge]][gitterUrl]
 
 # FHP Design Courses Scraper  
-This scrapper is designed to extract informations about the design courses given in the University of Applied Science Potsdam as well as the teachers of the school. More precisely, it focuses on scrapping the [online course catalog][vorlesungsverzeichnis FHP] of the design faculty and the [page listing the people involved in the school][people list FHP].
+This node.js scrapper made with [Nightmare.js](https://github.com/segmentio/nightmare) is designed to extract informations about the design courses given in the University of Applied Science Potsdam as well as the teachers of the school. More precisely, it focuses on scrapping the [online course catalog][vorlesungsverzeichnis FHP] of the design faculty and the [page listing the people involved in the school][people list FHP].
 
 ## Prerequisites
-To contribute to the development and to run the courses API, make sure you fulfill the following prerequisites:
-
-- node 6.7.0
-- [nightmare.js](https://github.com/segmentio/nightmare)
+To contribute to the development and to run the courses API, make sure you have `node (6.7.0)` and `npm 3.10.3` installed.
 
 ## Quick Start
 
@@ -22,14 +19,14 @@ npm install
 npm start
 ```
 
-## What to expect
-The script will spit out a timestamped json file in **/results** with all courses from
+## What it scrapes
+The script will save two timestamped json files in the **`results`** folder with all courses from
 
 - http://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis/1-studienabschnitt-ba-design/
 - http://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis/2-studienabschnitt-ba-design/
 - http://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis/ma-design/
 
-...and all teachers from the following pages:
+...and all teachers from:
 
 - https://www.fh-potsdam.de/studieren/design/personen/
 
