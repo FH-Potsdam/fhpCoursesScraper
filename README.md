@@ -56,5 +56,5 @@ If you want to know more about the Project and/or the Workshop, look at our [doc
 [gitterBadge]: https://badges.gitter.im/Join%20Chat.svg
 [gitterUrl]:  https://gitter.im/FH-Potsdam/coursesAPI?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
-[vorlesungsverzeichnisFHP]: https://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis
+[vorlesungsverzeichnis FHP]: https://www.fh-potsdam.de/studieren/design/studium/vorlesungsverzeichnis
 [people list FHP]: https://www.fh-potsdam.de/studieren/design/personen
