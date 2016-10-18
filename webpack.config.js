@@ -7,12 +7,15 @@ readdirSync(resolve(__dirname, 'node_modules'))
 	.forEach(mod => { nodeModules[mod] = `commonjs ${mod}`; });
 
 module.exports = () => ({
-	entry: './src/index.js',
+	entry: {
+		courses: ['babel-polyfill', './src/courses/index.js'],
+		people: ['babel-polyfill', './src/people/index.js']
+	},
 	target: 'node',
 	output: {
 		path: resolve(__dirname, 'dist'),
 		publicPath: resolve(__dirname, 'dist'),
-		filename: 'bundle.js'
+		filename: '[name].js'
 	},
 	externals: nodeModules,
 	module: {
