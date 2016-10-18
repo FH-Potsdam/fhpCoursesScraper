@@ -1,4 +1,4 @@
-/* global $ */
+/* global $ */ // There because the scraper evalute fnc uses jquery of the website
 import Nightmare from 'nightmare';
 import { STUDY_STAGES, COURSE_CATALOG_BASE_URL, SCRAPER_USER_AGENT } from './constants';
 
@@ -43,17 +43,14 @@ const scrapePage = function(studyStage) {
 }
 
 
-module.exports = {
-	scrape(studyStage, callback) {
-		new Nightmare()
-			.useragent(SCRAPER_USER_AGENT)
-			.goto(`${COURSE_CATALOG_BASE_URL}${getSudyStageUrl(studyStage)}`)
-			.wait('body')
-			.evaluate(scrapePage, studyStage)
-			.run((err, nightmare) => {
-				if (err) throw err;
-				callback(nightmare);
-			})
-			.end();
-	}
-};
+export default (studyStage, callback) =>
+	new Nightmare()
+		.useragent(SCRAPER_USER_AGENT)
+		.goto(`${COURSE_CATALOG_BASE_URL}${getSudyStageUrl(studyStage)}`)
+		.wait('body')
+		.evaluate(scrapePage, studyStage)
+		.run((err, nightmare) => {
+			if (err) throw err;
+			callback(nightmare);
+		})
+		.end();
